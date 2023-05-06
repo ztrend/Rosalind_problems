@@ -18,15 +18,23 @@ import sys
 def dna_to_rna(dna_string):
     return dna_string.replace('T', 'U')
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
+def main():
+   if len(sys.argv) != 2:
         print("Usage: python RNA.py <dna_string>")
+
+
+
         sys.exit(1)
 
-    dna_string = sys.argv[1]
-    rna_string = dna_to_rna(dna_string)
-    print(rna_string)
+   dna_string = sys.argv[1]
+   rna_string = dna_to_rna(dna_string)
+   #Instead of printing the resutls we open a txt file
+   with open('rna_result.txt', 'w') as output_file:
+        output_file.write(rna_string)
 
+if __name__=="__main__":
+    main()
+#Simple code
 # t = str(input())
 
 # print(t.replace("T","U"))
