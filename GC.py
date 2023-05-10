@@ -15,9 +15,23 @@ Return: The ID of the string having the highest GC-content, followed by the GC-c
 # TCCCACTAATAATTCTGAGG
 
 s = str(input("Input fasta file:"))
+# First I apply sting modifications by a) removing spaces, b) spliting the string at the > position and c) removing the empty item 0
+# Next I have a list to work on with a for loop where I will apply calculations
+
+s = s.replace(" ", "")
+s = s.split(">")
+s.pop(0)
+
+# gc_content = {}
+# for index,letter in enumerate(s):
+#     if letter == ">":
+#         gc_content["id"] = s[index+1:index+14]
+
+ return
 
 t =s[14:]
 g = t.count("G")
 c = t.count("C")
 gc = (g + c)/len(t)
+
 print(gc)
