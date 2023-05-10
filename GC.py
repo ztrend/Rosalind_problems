@@ -22,16 +22,16 @@ s = s.replace(" ", "")
 s = s.split(">")
 s.pop(0)
 
-# gc_content = {}
-# for index,letter in enumerate(s):
-#     if letter == ">":
-#         gc_content["id"] = s[index+1:index+14]
+# Now we have a clean list to iterate in. But the output will be based on a calculation, so we need a dictionary for this.
+dict = {}
+for index,i in enumerate(s):
+    string_id = i[:13]   # Create a key with the name of the DNA id
+    dna = i[13:]        # Create a value with the DNA string
+    g = dna.count("G")  # Count the Gs
+    c = dna.count("C")   # Count the Cs
+    gc = ((g + c)/len(dna))*100  # Calculate the GC percentage
+    dict[string_id] = gc     # Add the DNA id and the GC percentage in the dictionary
 
- return
-
-t =s[14:]
-g = t.count("G")
-c = t.count("C")
-gc = (g + c)/len(t)
-
-print(gc)
+max_value = max(dict.values())    # Get the max value from the dictionary
+max_key = max(dict, key=dict.get)  # Get the max key from the dictionary
+print(f"{max_key}\n{max_value}")   # Print the correct value
