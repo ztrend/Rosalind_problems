@@ -14,24 +14,59 @@ Return: The ID of the string having the highest GC-content, followed by the GC-c
 # CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
 # TCCCACTAATAATTCTGAGG
 
-s = str(input("Input fasta file:"))
-# First I apply sting modifications by a) removing spaces, b) spliting the string at the > position and c) removing the empty item 0
-# Next I have a list to work on with a for loop where I will apply calculations
+# s = str(input("Input fasta file:"))
+# # First I apply sting modifications by a) removing spaces, b) spliting the string at the > position and c) removing the empty item 0
+# # Next I have a list to work on with a for loop where I will apply calculations
 
-s = s.replace(" ", "")
-s = s.split(">")
-s.pop(0)
+# s = s.replace(" ", "")
+# s = s.split(">")
+# s.pop(0)
 
-# Now we have a clean list to iterate in. But the output will be based on a calculation, so we need a dictionary for this.
-dict = {}
-for index,i in enumerate(s):
-    string_id = i[:13]   # Create a key with the name of the DNA id
-    dna = i[13:]        # Create a value with the DNA string
-    g = dna.count("G")  # Count the Gs
-    c = dna.count("C")   # Count the Cs
-    gc = ((g + c)/len(dna))*100  # Calculate the GC percentage
-    dict[string_id] = gc     # Add the DNA id and the GC percentage in the dictionary
+# # Now we have a clean list to iterate in. But the output will be based on a calculation, so we need a dictionary for this.
+# dict = {}
+# for index,i in enumerate(s):
+#     string_id = i[:13]   # Create a key with the name of the DNA id
+#     dna = i[13:]        # Create a value with the DNA string
+#     g = dna.count("G")  # Count the Gs
+#     c = dna.count("C")   # Count the Cs
+#     gc = ((g + c)/len(dna))*100  # Calculate the GC percentage
+#     dict[string_id] = gc     # Add the DNA id and the GC percentage in the dictionary
 
-max_value = max(dict.values())    # Get the max value from the dictionary
-max_key = max(dict, key=dict.get)  # Get the max key from the dictionary
-print(f"{max_key}\n{max_value}")   # Print the correct value
+# max_value = max(dict.values())    # Get the max value from the dictionary
+# max_key = max(dict, key=dict.get)  # Get the max key from the dictionary
+# print(f"{max_key}\n{max_value}")   # Print the correct value
+
+
+def calculate_gc_content(filename):
+    with open(filename, 'r') as file:
+        lines = file.read().split('\n')
+
+    dna_dict = {}
+    current_key = ''
+
+    for line in lines:
+        if line.startswith('>'):
+            current_key = line[1:]  # Remove '>'
+        else:
+            if current_key not in dna_dict:
+                dna_dict[current_key] = line
+            else:
+                dna_dict[current_key] += line
+
+    gc_content_dict = {}
+    for key, dna in dna_dict.items():
+        gc_content = (dna.count('G') + dna.count('C')) / len(dna) * 100
+        gc_content_dict[key] = gc_content
+
+    max_key = max(gc_content_dict, key=gc_content_dict.get)
+    max_value = gc_content_dict[max_key]
+
+    print(f"{max_key}\n{max_value}")
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <filename>")
+    else:
+        filename = sys.argv[1]
+        calculate_gc_content(filename)
