@@ -1,5 +1,13 @@
 '''
 Problem
+ Mendel stated that every organism possesses a pair of alleles for a given factor.
+ If an individual's two alleles for a given factor are the same,
+ then it is homozygous for the factor;
+ if the alleles differ, then the individual is heterozygous.
+ The first law concludes that for any factor,
+ an organism randomly passes one of its two alleles to each offspring,
+ so that an individual receives one allele from each parent.
+ Mendel also believed that any factor corresponds to only two possible alleles, the dominant and recessive alleles.
 
 Probability is the mathematical study of randomly occurring phenomena.
 We will model such a phenomenon with a random variable,
@@ -34,3 +42,4 @@ Return: The probability that two randomly selected mating organisms
 will produce an individual possessing a dominant allele (and thus displaying the dominant phenotype).
 Assume that any two organisms can mate.
 '''
+# Probability issue
