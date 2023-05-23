@@ -43,3 +43,21 @@ will produce an individual possessing a dominant allele (and thus displaying the
 Assume that any two organisms can mate.
 '''
 # Probability issue
+def prob_dominant(k, m, n):
+    # Total population
+    pop_total = k + m + n
+    # Total probability
+    total_prob = 1
+    # Probabilities of choosing different pairs
+    prob_kk = (k/pop_total) * ((k-1)/(pop_total-1))
+    prob_km = (k/pop_total) * (m/(pop_total-1)) + (m/pop_total) * (k/(pop_total-1))
+    prob_kn = (k/pop_total) * (n/(pop_total-1)) + (n/pop_total) * (k/(pop_total-1))
+    prob_mm = (m/pop_total) * ((m-1)/(pop_total-1))
+    prob_mn = (m/pop_total) * (n/(pop_total-1)) + (n/pop_total) * (m/(pop_total-1))
+    prob_nn = (n/pop_total) * ((n-1)/(pop_total-1))
+    # Probability of dominant allele
+    prob_dom = total_prob * (prob_kk + prob_km + prob_kn + 0.75*prob_mm + 0.5*prob_mn)
+    return prob_dom
+
+k, m, n = 2, 2, 2
+print(prob_dominant(k, m, n))
