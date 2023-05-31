@@ -18,7 +18,8 @@ def Reverse(Pattern):
 # Input:  A DNA string Pattern
 # Output: The complementary string of Pattern (with every nucleotide replaced by its complement)."""
 def Complement(Pattern):
+    dict = {'A':'T','T':'A','C':'G','G':'C'}
     rev = ""
     for letter in Pattern:
-        rev = letter + rev
+        rev = rev + dict[letter]
     return rev
