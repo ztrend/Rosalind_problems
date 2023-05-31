@@ -12,6 +12,11 @@ Return: The reverse complement sc of s
 '''
 import sys
 
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
+    return content
+
 def reverse_dna(dna_string):
     trans_dict = {'A':'T','T':'A','C':'G','G':'C'}
     map = dna_string.maketrans(trans_dict)
