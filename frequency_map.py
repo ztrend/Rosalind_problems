@@ -11,5 +11,5 @@ def FrequencyMap(Text, k):
         Pattern = Text[i:i+k]
         if Pattern in freq:
             freq[Pattern]+= 1
-        print(freq)
+        #print(freq)
     return freq
