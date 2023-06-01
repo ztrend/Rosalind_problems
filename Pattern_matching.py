@@ -1,21 +1,4 @@
 """Write a function PatternMatching that solves the Pattern Matching Problem. Then add PatternMatching to Replication.py.
-
-Pattern Matching Problem: Find all occurrences of a pattern in a string.
-     Input: Strings Pattern and Genome.
-     Output: All starting positions in Genome where Pattern appears as a substring."""
-
-     # fill in your PatternMatching() function along with any subroutines that you need.
-def PatternMatching(Pattern, Genome):
-    positions = [] # output variable
-    a =0
-    for i in range(len(Genome)):
-        x = Genome.find(Pattern, i+a, len(Genome))
-        if x != -1:
-            positions.append(x)
-            a+=x
-    return positions
-
-"""Write a function PatternMatching that solves the Pattern Matching Problem. Then add PatternMatching to Replication.py.
 Sample Input:
 ATAT
 GATATATGCATATACTT
@@ -23,6 +6,7 @@ GATATATGCATATACTT
 Sample Output:
 1 3 9
 """
+import sys
 
 def PatternMatching(Pattern, Genome):
     positions = [] # output variable
@@ -36,3 +20,21 @@ def PatternMatching(Pattern, Genome):
             positions.append(x)
             a = x  #
     return positions
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <pattern> <genome>")
+        sys.exit(1)
+
+    Pattern = sys.argv[1]
+    Genome = sys.argv[2]
+
+    positions = PatternMatching(Pattern, Genome)
+    print(positions)
+
+if __name__ == "__main__":
+    main()
+# if __name__ == '__main__':
+#     Pattern = "CTTGATCAT"
+#     Genome = "AAAGAGTGTCTGATAGCAGCTTCTGAACTGGTTACCTGCCGTGAGTAAATTAAATTTTATTGACTTAGGTCACTAAATACTTTAACCAATATAGGCATAGCGCACAGACAGATAATAATTACAGAGTACACAACATCCAT"
+#     PatternMatching(Pattern, Genome)
