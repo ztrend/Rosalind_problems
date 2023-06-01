@@ -28,8 +28,11 @@ def PatternMatching(Pattern, Genome):
     positions = [] # output variable
     a =0
     for i in range(len(Genome)):
+        #This will find the first occurence of the pattern starting from the position a+i. the first attempt will start from 0.
+        # Why a+i? x tells us where the first occurence starts. So in the next iteration we don't care to go over all the letters. we just want to go one step after the first occurence.
+        # That will be i + a (which will equal to x)
         x = Genome.find(Pattern, a+i, len(Genome))
         if x != -1:
             positions.append(x)
-            a =x +i
+            a = x  #
     return positions
