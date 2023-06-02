@@ -30,8 +30,11 @@ codon = {
     "UGA": "Stop", "CGA": "R", "AGA": "R", "GGA": "G",
     "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"
 }
-#Input an RNA string
-rna = str(input("Input RNA sequence"))
+
+# Read the text file containing the RNA sequence
+file_path = "/root/code/data_science/Rosalind_problems/rosalind_prot.txt"  # Replace with the actual file path
+with open(file_path, "r") as file:
+    rna = file.read().strip()
 #Break the RNA string into a list of 3 codons
 rna =[rna[i:i+3] for i in range(0,len(rna),3)]
 # Create an empty list to append each protein name
