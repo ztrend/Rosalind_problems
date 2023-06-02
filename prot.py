@@ -11,6 +11,7 @@ Given: An RNA string s
 
 Return: The protein string encoded by
 """
+#Create a dictionary with the RNA codon table
 codon = {
     "UUU": "F", "CUU": "L", "AUU": "I", "GUU": "V",
     "UUC": "F", "CUC": "L", "AUC": "I", "GUC": "V",
@@ -29,3 +30,16 @@ codon = {
     "UGA": "Stop", "CGA": "R", "AGA": "R", "GGA": "G",
     "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"
 }
+#Input an RNA string
+rna = str(input("Input RNA sequence"))
+#Break the RNA string into a list of 3 codons
+rna =[rna[i:i+3] for i in range(0,len(rna),3)]
+# Create an empty list to append each protein name
+protein = []
+# With a for loop append to the protein list, each protein found in rna list
+for cod in rna:
+    if cod in codon:
+        protein.append(codon[cod])
+# Drop the , and join all letters except the last one, which is the stop codon
+proteins = ''.join(map(str, protein[:-1]))
+print(proteins)
