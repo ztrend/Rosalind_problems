@@ -46,3 +46,7 @@ for cod in rna:
 # Drop the , and join all letters except the last one, which is the stop codon
 proteins = ''.join(map(str, protein[:-1]))
 print(proteins)
+
+
+#Alternative one liner with list comprehension
+#proteins = ''.join(codon.get(rna[i:i+3], '') for i in range(0, len(rna), 3) if i + 3 <= len(rna) and codon[rna[i:i+3]] != "Stop"))
