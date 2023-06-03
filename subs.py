@@ -38,3 +38,5 @@ Given: Two DNA strings s
 Return: All locations of t
  as a substring of s
 """
+genome = str(input("Input DNA string"))
+substing = str(input)
