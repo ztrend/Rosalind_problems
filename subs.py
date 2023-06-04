@@ -39,4 +39,10 @@ Return: All locations of t
  as a substring of s
 """
 genome = str(input("Input DNA string"))
-substing = str(input)
+substr = str(input)
+position = []
+for i in range(len(genome) - len(substr)+1):
+    print(genome[i:i+len(substr)])
+    if genome[i:i+len(substr)] == substr:
+        position.append(i)
+print(position)
