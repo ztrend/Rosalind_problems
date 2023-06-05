@@ -25,4 +25,15 @@ th symbol of c
 -th column of the profile matrix. Of course, there may be more than one most common symbol, leading to multiple possible consensus strings."""
 
 #Input 10 strings size n
-#Output a dictionary of A,C,G,T with values a list of n numbers that count the key at that position
+#Output a dictionary of A,C,G,T with values a list of n numbers that count the key at that position and the consensus string
+# We are using numpy as we will work with matrices
+import numpy as np
+
+#Input DNA strings
+DNA1 = "ATCCAGCT"
+DNA2 = "GGGCAACT"
+
+matrix = np.concatenate(DNA1+DNA2)
+
+
+consensus = max()
