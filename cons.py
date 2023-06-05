@@ -23,3 +23,6 @@ A consensus string c
 th symbol of c
  therefore corresponds to the symbol having the maximum value in the j
 -th column of the profile matrix. Of course, there may be more than one most common symbol, leading to multiple possible consensus strings."""
+
+#Input 10 strings size n
+#Output a dictionary of A,C,G,T with values a list of n numbers that count the key at that position
