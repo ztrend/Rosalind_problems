@@ -30,10 +30,30 @@ th symbol of c
 import numpy as np
 
 #Input DNA strings
-DNA1 = "ATCCAGCT"
-DNA2 = "GGGCAACT"
+# DNA1 = "ATCCAGCT"
+# DNA2 = "GGGCAACT"
 
-matrix = np.concatenate(DNA1+DNA2)
+# matrix = np.concatenate(DNA1+DNA2)
 
 
-consensus = max()
+# consensus = max()
+
+
+def profile_matrix_and_consensus_string(dna_strings):
+    profile_matrix = {'A': [], 'C': [], 'G': [], 'T': []}
+    for key in profile_matrix:
+        profile_matrix[key] = [0]*len(dna_strings[0])
+
+    for dna_string in dna_strings:
+        for i, nucleotide in enumerate(dna_string):
+            profile_matrix[nucleotide][i] += 1
+
+    consensus_string = ''
+    for i in range(len(dna_strings[0])):
+        max_nucleotide = 'A'
+        for nucleotide in 'ACGT':
+            if profile_matrix[nucleotide][i] > profile_matrix[max_nucleotide][i]:
+                max_nucleotide = nucleotide
+        consensus_string += max_nucleotide
+
+    return profile_matrix, consensus_string
