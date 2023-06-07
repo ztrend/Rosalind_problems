@@ -57,3 +57,18 @@ def profile_matrix_and_consensus_string(dna_strings):
         consensus_string += max_nucleotide
 
     return profile_matrix, consensus_string
+
+
+# Reading from input file
+with open("input.txt", "r") as file:
+    lines = file.readlines()
+    dna_strings = [line.strip() for line in lines if not line.startswith(">")]
+
+# Processing the DNA strings
+profile_matrix, consensus_string = profile_matrix_and_consensus_string(dna_strings)
+
+# Writing to output file
+with open("output.txt", "w") as file:
+    file.write(consensus_string + "\n")
+    for nucleotide in 'ACGT':
+        file.write(nucleotide + ": " + " ".join(map(str, profile_matrix[nucleotide])) + "\n")
