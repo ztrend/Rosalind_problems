@@ -60,7 +60,7 @@ def profile_matrix_and_consensus_string(dna_strings):
 
 
 # Reading from input file
-with open("input.txt", "r") as file:
+with open("rosalind_cons.txt", "r") as file:
     lines = file.readlines()
     dna_strings = [line.strip() for line in lines if not line.startswith(">")]
 
@@ -68,7 +68,7 @@ with open("input.txt", "r") as file:
 profile_matrix, consensus_string = profile_matrix_and_consensus_string(dna_strings)
 
 # Writing to output file
-with open("output.txt", "w") as file:
+with open("cons_output.txt", "w") as file:
     file.write(consensus_string + "\n")
     for nucleotide in 'ACGT':
         file.write(nucleotide + ": " + " ".join(map(str, profile_matrix[nucleotide])) + "\n")
