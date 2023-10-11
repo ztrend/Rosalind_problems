@@ -59,5 +59,5 @@ def prob_dominant(k, m, n):
     prob_dom = total_prob * (prob_kk + prob_km + prob_kn + 0.75*prob_mm + 0.5*prob_mn)
     return prob_dom
 
-k, m, n = 2, 2, 2
-print(prob_dominant(k, m, n))
+# k, m, n = 2, 2, 2
+# print(prob_dominant(k, m, n))
